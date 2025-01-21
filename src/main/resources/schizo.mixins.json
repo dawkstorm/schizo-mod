@@ -3,7 +3,8 @@
 	"package": "net.dawkstorm.schizo.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ExampleMixin"
+		"ExampleMixin",
+		"ModEntityDataSaverMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

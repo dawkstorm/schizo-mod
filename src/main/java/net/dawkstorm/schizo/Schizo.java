@@ -26,12 +26,12 @@
 				if(Math.random() < 0.005){
 					LOGGER.info("hehehee");
 					RandomNoises.playRandomSound(client);
-					LOGGER.info(""+InsanityData.getInsanity((IEntityDataSaver) player));
+					//LOGGER.info(""+InsanityData.getInsanity((IEntityDataSaver) player));
 				}
-				/*InsanityData.addInsanity((IEntityDataSaver) player, 0.0025f);
+				InsanityData.addInsanity((IEntityDataSaver) player, 0.0025f);
 				player.sendMessage(Text.literal("Insanity: " + ((IEntityDataSaver) player)
 						.getPersistentData().getFloat("schizo_insanity")).
-							fillStyle(Style.EMPTY.withColor(Formatting.AQUA)), true);*/
+							fillStyle(Style.EMPTY.withColor(Formatting.AQUA)), true);
 			});
 		}
 
