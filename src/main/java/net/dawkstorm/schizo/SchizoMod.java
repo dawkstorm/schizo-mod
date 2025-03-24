@@ -1,5 +1,6 @@
 	package net.dawkstorm.schizo;
 
+	import net.dawkstorm.schizo.item.ModItems;
 	import net.dawkstorm.schizo.util.IEntityDataSaver;
 	import net.dawkstorm.schizo.util.InsanityData;
 	import net.dawkstorm.schizo.util.RandomNoises;
@@ -14,25 +15,28 @@
 	import org.slf4j.LoggerFactory;
 
 
-	public class Schizo implements ModInitializer {
+	public class SchizoMod implements ModInitializer {
 		public static final String MOD_ID = "schizo";
 		public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 		@Override
 		public void onInitialize() {
 			LOGGER.info("meow :3");
+			ModItems.registerModItems();
 			ClientTickEvents.START_WORLD_TICK.register(client -> {
-				PlayerEntity player = client.getPlayers().getFirst();
-				if(Math.random() < 0.005){
-					LOGGER.info("hehehee");
-					RandomNoises.playRandomSound(client);
-					//LOGGER.info(""+InsanityData.getInsanity((IEntityDataSaver) player));
-				}
-				InsanityData.addInsanity((IEntityDataSaver) player, 0.0025f);
-				player.sendMessage(Text.literal("Insanity: " + ((IEntityDataSaver) player)
-						.getPersistentData().getFloat("schizo_insanity")).
-							fillStyle(Style.EMPTY.withColor(Formatting.AQUA)), true);
-			});
+				if(client.getPlayers().size() != 0){
+					PlayerEntity player = client.getPlayers().getFirst();
+					if(Math.random() < 0.005 * InsanityData.getInsanity((IEntityDataSaver) player	)){
+						LOGGER.info("hehehee");
+						RandomNoises.playRandomSound(client);
+						//LOGGER.info(""+InsanityData.getInsanity((IEntityDataSaver) player));
+					}
+					InsanityData.addInsanity((IEntityDataSaver) player, 0.0025f);
+					player.sendMessage(Text.literal("Insanity: " + ((IEntityDataSaver) player)
+							.getPersistentData().getFloat("schizo_insanity")).
+								fillStyle(Style.EMPTY.withColor(Formatting.AQUA)), true);
+			}});
+
 		}
 
 

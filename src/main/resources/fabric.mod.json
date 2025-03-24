@@ -16,7 +16,7 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.dawkstorm.schizo.Schizo"
+			"net.dawkstorm.schizo.SchizoMod"
 		],
 		"fabric-datagen": [
 			"net.dawkstorm.schizo.SchizoDataGenerator"
